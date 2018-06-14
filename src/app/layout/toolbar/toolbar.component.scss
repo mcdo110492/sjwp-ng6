@@ -1,0 +1,55 @@
+.content-toolbar {
+  height: 10rem;
+  background: linear-gradient(to bottom right, #085078, #85d8ce);
+  border-radius: 0.5rem 0.5rem 0 0;
+}
+
+.card-logo {
+  display: flex;
+  width: 5.5rem;
+  height: 5.5rem;
+  border-radius: 0.2rem;
+  background-color: #eff0f8ea;
+  justify-content: center;
+  margin: 2.5rem 1rem 1rem 3rem;
+  img {
+    position: relative;
+    width: 7rem;
+    height: 7rem;
+    top: 0.8rem;
+  }
+}
+
+.company-text {
+  margin: 3.5rem 0 0 0;
+  color: rgb(255, 253, 253);
+  flex-grow: 10;
+}
+
+.action-button {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  padding: 1.5rem;
+
+  .logout-button {
+    flex: 2;
+    color: rgb(255, 253, 253);
+    margin-top: 1.5rem;
+    margin-left: 2rem;
+  }
+
+  .profile-button {
+    flex: 1;
+  }
+}
+
+.mat-menu {
+  z-index: 1;
+}
+
+@media only screen and (max-width: 600px) {
+  .card-logo {
+    margin: 2.5rem 1rem 1rem 1rem;
+  }
+}

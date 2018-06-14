@@ -1,0 +1,9 @@
+<mat-nav-list>
+  <div *ngFor="let link of links; let i = index;">
+    <h3 mat-subheader *ngIf="link.isHeader">{{link.name}}</h3>
+    <mat-list-item *ngIf="!link.isHeader" [routerLink]="link.link" routerLinkActive="active mat-elevation-z6">
+      <mat-icon mat-list-icon>{{link.icon}}</mat-icon>
+      <a matLine>{{link.name}}</a>
+    </mat-list-item>
+  </div>
+</mat-nav-list>

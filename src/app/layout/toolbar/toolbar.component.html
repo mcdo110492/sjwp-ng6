@@ -1,0 +1,46 @@
+<div class="content-toolbar" fxLayout="row" fxFlex>
+
+  <mat-card class="card-logo">
+
+    <img mat-card-image src="./../../assets/sjwp-logo.png" alt="Photo of a Shiba Inu">
+
+  </mat-card>
+
+  <div class="company-text" fxHide.sm fxHide.xs fxShow>
+    <h3>St. Joseph The Worker Parish</h3>
+    <span>Vicmico, Victorias City</span>
+  </div>
+
+  <div class="action-button">
+
+    <div class="logout-button">
+      <button mat-icon-button matTooltip="CLICK TO LOGOUT YOUR ACCOUNT" routerLink="/login">
+        <mat-icon aria-label="Logout Icon">play_circle_filled</mat-icon>
+        LOG OUT
+      </button>
+    </div>
+
+    <div class="profile-button">
+      <button mat-stroked-button color="primary" [matMenuTriggerFor]="menu">EDIT PROFILE</button>
+
+    </div>
+
+  </div>
+
+</div>
+
+<mat-menu #menu="matMenu" xPosition="before" overlapTrigger="false">
+  <button mat-menu-item>
+    <mat-icon>face</mat-icon>
+    <span>Lorem Ipsum Dolor</span>
+  </button>
+  <mat-divider></mat-divider>
+  <button mat-menu-item>
+    <mat-icon>account_circle</mat-icon>
+    <span>Change Username</span>
+  </button>
+  <button mat-menu-item>
+    <mat-icon>lock_reset</mat-icon>
+    <span>Change Password</span>
+  </button>
+</mat-menu>

@@ -1,4 +1,6 @@
-# Sjwp
+# St. Josep the Worker Parish Front End
+
+Using Angular v6 and NGXS
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 6.0.7.
 

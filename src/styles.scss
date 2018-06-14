@@ -1,1 +1,44 @@
 /* You can add global styles to this file, and also import other style files */
+
+html,
+body {
+  margin: 0;
+  height: 100%;
+  width: 100%;
+  font-family: "Anton", sans-serif;
+  font-family: "Roboto", sans-serif;
+}
+
+@import "./custom-theme.scss";
+
+.table-list-container {
+  position: relative;
+}
+
+.table-list {
+  position: relative;
+  max-height: 500px;
+  overflow: auto;
+}
+
+table {
+  width: 100%;
+}
+
+.table-loading {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 56px;
+  right: 0;
+  background: rgba(0, 0, 0, 0.15);
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.mat-form-field {
+  width: 100%;
+  font-size: 16px;
+}

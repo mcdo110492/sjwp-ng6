@@ -1,0 +1,31 @@
+$background-gradient: linear-gradient(to left, #085078, #85d8ce);
+
+mat-nav-list {
+  h3 {
+    color: #74c2bf;
+  }
+
+  mat-list-item {
+    color: #266b87;
+    font-size: 0.8rem;
+  }
+
+  .active {
+    position: relative;
+    width: 90%;
+    background: $background-gradient;
+    color: #ffff;
+  }
+
+  .active:before {
+    content: "";
+    position: absolute;
+    right: -24px;
+    bottom: 0;
+    width: 0;
+    height: 0;
+    border-left: 24px solid #085078;
+    border-top: 24px solid transparent;
+    border-bottom: 24px solid transparent;
+  }
+}

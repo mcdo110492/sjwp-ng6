@@ -1,0 +1,48 @@
+$white-text: #ffff;
+$font-w-500: 500;
+$background-liner: linear-gradient(to right, #085078, #85d8ce);
+
+.login-form {
+  position: relative;
+  top: 1.5rem;
+}
+
+.login-button {
+  width: 100%;
+  background: $background-liner;
+  color: $white-text;
+  font-weight: $font-w-500;
+  text-transform: uppercase;
+  font-size: 1.2rem;
+  letter-spacing: 0.2rem;
+
+  .login-icon {
+    position: absolute;
+    margin-left: 6rem;
+    margin-top: 0.5rem;
+  }
+}
+
+.login-button:hover .login-icon {
+  animation-name: slideLoginIcon;
+  animation-duration: 1.5s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+
+@keyframes slideLoginIcon {
+  0% {
+    opacity: 1;
+    margin-left: 6rem;
+  }
+  25% {
+    margin-left: 7.5rem;
+  }
+  50% {
+    opacity: 0;
+    margin-left: 9rem;
+  }
+  100% {
+    opacity: 0;
+  }
+}

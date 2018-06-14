@@ -1,0 +1,46 @@
+.content-container {
+  width: auto;
+  height: 100%;
+  padding: 5rem;
+}
+
+.content-bg {
+  background: linear-gradient(to bottom left, #085078, #85d8ce);
+}
+
+.content {
+  background-color: #eff0f8ea;
+  height: auto;
+  border-radius: 0.5rem;
+  height: 100%;
+}
+
+.main-content {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.sidenav-container {
+  height: 100%;
+  width: 330px;
+  padding: 0.2rem 1rem 1rem 1rem;
+  overflow: auto;
+}
+
+.main-content-container {
+  width: auto;
+  height: 100%;
+  overflow: auto;
+  padding: 1.5rem;
+}
+
+@media only screen and (max-width: 600px) {
+  .content-container {
+    padding: 1rem;
+  }
+}
+
+app-toolbar {
+  z-index: 1;
+}
