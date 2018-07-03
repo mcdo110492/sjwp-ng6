@@ -19,7 +19,8 @@
       "@features/*": ["app/features/*"],
       "@layout/*": ["app/layout/*"],
       "@services/*": ["app/services/*"],
-      "@shared/*": ["app/shared/*"]
+      "@shared/*": ["app/shared/*"],
+      "@animation/*": ["app/animations/*"]
     }
   }
 }

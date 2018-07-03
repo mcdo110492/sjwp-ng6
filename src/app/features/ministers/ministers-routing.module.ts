@@ -4,7 +4,8 @@ import { Routes, RouterModule } from "@angular/router";
 import {
   MinistersComponent,
   MinisterListComponent,
-  MinisterFormComponent
+  MinistersCreateComponent,
+  MinistersUpdateComponent
 } from "./components";
 
 const routes: Routes = [
@@ -13,16 +14,20 @@ const routes: Routes = [
     component: MinistersComponent,
     children: [
       { path: "", pathMatch: "full", redirectTo: "list" },
-      { path: "list", component: MinisterListComponent },
+      {
+        path: "list",
+        component: MinisterListComponent,
+        data: { state: "list" }
+      },
       {
         path: "create",
-        component: MinisterFormComponent,
-        data: { title: "Create New Minister" }
+        component: MinistersCreateComponent,
+        data: { state: "create" }
       },
       {
         path: "update/:id",
-        component: MinisterFormComponent,
-        data: { title: "Update Minister" }
+        component: MinistersUpdateComponent,
+        data: { state: "update" }
       }
     ]
   }

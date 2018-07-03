@@ -1,16 +1,16 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, ChangeDetectionStrategy } from "@angular/core";
+
+import { fadeInOut } from "@animation/fade-in-out.animation";
 
 @Component({
   selector: "app-ministers",
   templateUrl: "./ministers.component.html",
-  styleUrls: ["./ministers.component.scss"]
+  styleUrls: ["./ministers.component.scss"],
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  animations: [fadeInOut]
 })
-export class MinistersComponent implements OnInit {
-  constructor() {}
-
-  ngOnInit() {}
-
-  getSearchText(e) {
-    console.log(e);
+export class MinistersComponent {
+  getState(outlet) {
+    return outlet.activatedRouteData.state;
   }
 }

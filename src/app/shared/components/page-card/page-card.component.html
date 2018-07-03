@@ -1,0 +1,12 @@
+<mat-toolbar [color]="toolbarColor" class="">
+  <button *ngIf="back" mat-stroked-button [routerLink]="link">
+    <mat-icon>arrow_back</mat-icon>
+    BACK
+  </button>
+</mat-toolbar>
+
+<mat-card>
+
+  <ng-content></ng-content>
+
+</mat-card>

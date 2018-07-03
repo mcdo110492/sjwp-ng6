@@ -1,32 +1,67 @@
-import { Component, OnInit, ChangeDetectionStrategy } from "@angular/core";
+import {
+  Component,
+  OnInit,
+  ChangeDetectionStrategy,
+  Input,
+  Output,
+  EventEmitter
+} from "@angular/core";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
-import { ActivatedRoute } from "@angular/router";
+
+import { MinistersModel } from "@features/ministers/models/ministers.model";
+
+import { Select } from "@ngxs/store";
+import { MinisterState } from "@features/ministers/store/state/minister.state";
+import { Observable } from "rxjs";
+
+import { fadeOutAnim } from "@animation/fade-out.animation";
 
 @Component({
   selector: "app-minister-form",
   templateUrl: "./minister-form.component.html",
-  styleUrls: ["./minister-form.component.scss"],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  animations: [fadeOutAnim]
 })
 export class MinisterFormComponent implements OnInit {
-  titlePage: string = "Create New Minister";
+  @Input() titlePage: string;
+  @Input() isUpdate: boolean = false;
+  @Input() selectedData: MinistersModel;
+  @Input() buttonLabel: string;
+
+  @Output()
+  submitForm: EventEmitter<MinistersModel> = new EventEmitter<MinistersModel>();
+
+  @Select(MinisterState.isSaving) isSaving$: Observable<boolean>;
+
   ministerForm: FormGroup;
 
   ngOnInit() {
     this.createForm();
-    this.titlePage = this.route.snapshot.data.title;
+    this.checkisUpdate();
   }
 
   createForm() {
     this.ministerForm = this.fb.group({
       id: [0, Validators.required],
-      name: [null, [Validators.required, Validators.max(150)]]
+      name: [null, [Validators.required, Validators.max(150)]],
+      active: [0]
     });
   }
 
-  public get nameRequired(): boolean {
+  get nameRequired(): boolean {
     return this.ministerForm.get("name").hasError("required");
   }
 
-  constructor(private fb: FormBuilder, private route: ActivatedRoute) {}
+  checkisUpdate() {
+    if (this.isUpdate && this.selectedData !== undefined) {
+      const { id, name, active } = this.selectedData;
+      this.ministerForm.patchValue({ id, name, active });
+    }
+  }
+
+  submit() {
+    this.submitForm.emit(this.ministerForm.value);
+  }
+
+  constructor(private fb: FormBuilder) {}
 }

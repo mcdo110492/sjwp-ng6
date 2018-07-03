@@ -12,17 +12,9 @@ export class FetchMinisters {
   ) {}
 }
 
-export class FetchMinistersSuccess {
-  static readonly type = "[MINSITER API] Fetch Success";
-  constructor(public payload: { count: number; data: MinistersModel[] }) {}
-}
-
-/**
- * Class that will handle all the http error
- */
-export class MinisterQueryError {
-  static readonly type = "[MINISTER API] Query Error";
-  constructor(public payload: any) {}
+export class SearchMinisters {
+  static readonly type = "[MINISTER PAGE] Search";
+  constructor(public payload: string) {}
 }
 
 export class CreateMinister {
@@ -30,17 +22,9 @@ export class CreateMinister {
   constructor(public payload: MinistersModel) {}
 }
 
-export class CreateMinisterSuccess {
-  static readonly type = "[MINISTER API] Create Success";
-}
-
 export class UpdateMinister {
   static readonly type = "[MINISTER PAGE] Update";
   constructor(public payload: MinistersModel) {}
-}
-
-export class UpdateSuccess {
-  static readonly type = "[MINISTER API] Update Success";
 }
 
 export class SelectMinister {

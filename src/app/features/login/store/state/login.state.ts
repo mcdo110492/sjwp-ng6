@@ -47,12 +47,12 @@ export class LoginState {
   @Action(LoginSuccess)
   loginSuccess(ctx: StateContext<LoginStateModel>, action: LoginSuccess) {
     ctx.dispatch(new SetCredentials(action.payload));
-    return ctx.patchState({ isLoading: false });
+    ctx.patchState({ isLoading: false });
   }
 
   @Action(LoginFailed)
   loginFailed(ctx: StateContext<LoginStateModel>, action: LoginFailed) {
     console.log(action.payload.message);
-    return ctx.patchState({ isLoading: false });
+    ctx.patchState({ isLoading: false });
   }
 }

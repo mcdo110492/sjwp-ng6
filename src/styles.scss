@@ -9,7 +9,19 @@ body {
   font-family: "Roboto", sans-serif;
 }
 
+/*
+  ================================
+  Custom Themes of Material Design
+  ================================
+*/
+
 @import "./custom-theme.scss";
+
+/*
+  ==================================================
+  Material Table Custom Style with laoding indicator
+  ==================================================
+*/
 
 .table-list-container {
   position: relative;
@@ -38,7 +50,36 @@ table {
   justify-content: center;
 }
 
+/*
+  =======================================================
+  Override the material form field default width and size
+  =======================================================
+*/
+
 .mat-form-field {
   width: 100%;
-  font-size: 16px;
+  font-size: 14px;
+}
+
+/* 
+  ============================
+  ngx-toastr basic style toast
+  ============================
+*/
+@import "~ngx-toastr/toastr.css";
+
+/*
+  =============
+  Router Child 
+  =============
+*/
+
+.child-routes {
+  position: relative;
+
+  router-outlet ~ * {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+  }
 }

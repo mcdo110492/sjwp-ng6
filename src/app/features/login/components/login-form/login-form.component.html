@@ -36,6 +36,6 @@
     <mat-icon class="login-icon">arrow_forward</mat-icon>
   </button>
 
-  <mat-spinner *ngIf="isLoading$ | async" diameter="50"></mat-spinner>
+  <mat-progress-bar *ngIf="isLoading$ | async" mode="indeterminate"></mat-progress-bar>
 
 </form>

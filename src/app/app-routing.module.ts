@@ -13,10 +13,10 @@ const mainRoutes: Routes = [
   {
     path: "registrar",
     loadChildren: "app/layout/layout.module#LayoutModule",
-    data: { preload: true }
+    data: { preload: true, state: "registrar" }
   },
 
-  { path: "login", component: LoginComponent }
+  { path: "login", component: LoginComponent, data: { state: "login" } }
 ];
 
 @NgModule({

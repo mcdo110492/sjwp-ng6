@@ -1,0 +1,2 @@
+<button @fadeOutAnim *ngIf="!isSaving" mat-raised-button [disabled]="disabled" (click)="save.emit(true)" [color]="color">{{ buttonLabel }}</button>
+<mat-spinner @fadeOutAnim *ngIf="isSaving" diameter="40"></mat-spinner>
