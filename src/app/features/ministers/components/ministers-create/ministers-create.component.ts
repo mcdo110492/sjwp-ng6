@@ -7,7 +7,6 @@ import { CreateMinister } from "@features/ministers/store/actions/minister.actio
 @Component({
   selector: "app-ministers-create",
   templateUrl: "./ministers-create.component.html",
-  styleUrls: ["./ministers-create.component.scss"],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class MinistersCreateComponent implements OnInit {

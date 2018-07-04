@@ -1,4 +1,9 @@
-import { Component, OnInit, ViewChild } from "@angular/core";
+import {
+  Component,
+  OnInit,
+  ViewChild,
+  ChangeDetectionStrategy
+} from "@angular/core";
 
 import { MatPaginator, MatSort } from "@angular/material";
 import { MinistersModel } from "@features/ministers/models/ministers.model";
@@ -16,7 +21,7 @@ import { Navigate } from "@ngxs/router-plugin";
 @Component({
   selector: "app-minister-list",
   templateUrl: "./minister-list.component.html",
-  styleUrls: ["./minister-list.component.scss"]
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class MinisterListComponent implements OnInit {
   @ViewChild(MatPaginator) paginator: MatPaginator;

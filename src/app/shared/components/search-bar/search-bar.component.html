@@ -2,7 +2,7 @@
   <mat-label>Search</mat-label>
   <mat-icon color="primary" matPrefix>search</mat-icon>
   <input matInput placeholder="{{placeHolder}}" [(formControl)]="searchText" />
-  <button mat-button *ngIf="searchText" matSuffix mat-icon-button aria-label="Clear" (click)="clear()">
+  <button mat-button *ngIf="searchText.value" matSuffix mat-icon-button aria-label="Clear" (click)="clear()">
     <mat-icon>close</mat-icon>
   </button>
 </mat-form-field>

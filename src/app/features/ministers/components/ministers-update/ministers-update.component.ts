@@ -10,7 +10,6 @@ import { Navigate } from "@ngxs/router-plugin";
 @Component({
   selector: "app-ministers-update",
   templateUrl: "./ministers-update.component.html",
-  styleUrls: ["./ministers-update.component.scss"],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class MinistersUpdateComponent implements OnInit {
