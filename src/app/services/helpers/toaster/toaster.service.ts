@@ -22,5 +22,9 @@ export class ToasterService {
     this.toast.warning(message, title);
   }
 
+  showSuccess(title: string, message: any) {
+    this.toast.success(message, title);
+  }
+
   constructor(private toast: ToastrService) {}
 }

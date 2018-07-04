@@ -2,10 +2,9 @@ import {
   map,
   debounceTime,
   distinctUntilChanged,
-  tap,
-  catchError
+  catchError,
+  switchMap
 } from "rxjs/operators";
-import { of } from "rxjs";
 
 import { State, Selector, Action, StateContext } from "@ngxs/store";
 import { MinisterStateModel } from "@features/ministers/store/model/minister.state.model";
@@ -15,7 +14,8 @@ import {
   SearchMinisters,
   SelectMinister,
   CreateMinister,
-  UpdateMinister
+  UpdateMinister,
+  ChangeMinisterStatus
 } from "@features/ministers/store/actions/minister.action";
 import { MinistersService } from "@features/ministers/services/ministers.service";
 import { ToasterService } from "@services/helpers/toaster/toaster.service";
@@ -119,7 +119,7 @@ export class MinisterState {
     return this.service.fetchData(params, []).pipe(
       debounceTime(500),
       distinctUntilChanged(),
-      map(response => {
+      switchMap(response => {
         const { data } = response;
 
         return ctx.patchState({
@@ -141,20 +141,55 @@ export class MinisterState {
   create(ctx: StateContext<MinisterStateModel>, action: CreateMinister) {
     ctx.patchState({ isSaving: true });
     const { payload } = action;
-    this.toast.showCreateSuccess("New Minister");
-    setTimeout(() => {
-      ctx.patchState({ isSaving: false });
-    }, 5000);
+    return this.service.create(payload).pipe(
+      map(() => {
+        this.toast.showSuccess(
+          "Create Minister Success",
+          "Minister has been created."
+        );
+        return ctx.patchState({ isSaving: false });
+      }),
+      catchError(() => ctx.patchState({ isSaving: false }))
+    );
   }
 
   @Action(UpdateMinister)
   update(ctx: StateContext<MinisterStateModel>, action: UpdateMinister) {
     ctx.patchState({ isSaving: true });
     const { payload } = action;
-    this.toast.showUpdateSuccess(`Minister ${payload.name}`);
-    setTimeout(() => {
-      ctx.patchState({ isSaving: false });
-    }, 5000);
+    return this.service.update(payload).pipe(
+      map(() => {
+        this.toast.showSuccess(
+          "Update Minister Success",
+          "Minister has been updated."
+        );
+        return ctx.patchState({ isSaving: false });
+      }),
+      catchError(() => ctx.patchState({ isSaving: false }))
+    );
+  }
+
+  @Action(ChangeMinisterStatus)
+  changeStatus(
+    ctx: StateContext<MinisterStateModel>,
+    action: ChangeMinisterStatus
+  ) {
+    const { pageIndex, pageSize, sort } = ctx.getState();
+    const { active, direction } = sort;
+    ctx.patchState({ isLoading: true });
+    const { id, status } = action.payload;
+    return this.service.changeStatus(id, status).pipe(
+      map(() => {
+        this.toast.showSuccess(
+          "Status Changed Successfully",
+          "The minister status has been changed."
+        );
+        return ctx.dispatch(
+          new FetchMinisters({ pageSize, pageIndex, active, direction })
+        );
+      }),
+      catchError(() => ctx.patchState({ isLoading: false }))
+    );
   }
 
   constructor(

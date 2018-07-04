@@ -32,3 +32,8 @@ export class SelectMinister {
 
   constructor(public payload: number) {}
 }
+
+export class ChangeMinisterStatus {
+  static readonly type = "[MINISTER PAGE] Change Status";
+  constructor(public payload: { id: number; status: number }) {}
+}

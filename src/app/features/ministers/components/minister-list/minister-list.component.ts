@@ -13,7 +13,8 @@ import { Store, Select } from "@ngxs/store";
 import {
   FetchMinisters,
   SearchMinisters,
-  SelectMinister
+  SelectMinister,
+  ChangeMinisterStatus
 } from "@features/ministers/store/actions/minister.action";
 import { MinisterState } from "@features/ministers/store/state/minister.state";
 import { Navigate } from "@ngxs/router-plugin";
@@ -67,6 +68,10 @@ export class MinisterListComponent implements OnInit {
   update(id: number) {
     this.store.dispatch(new SelectMinister(id));
     this.store.dispatch(new Navigate([`/registrar/ministers/update/${id}`]));
+  }
+
+  changeStatus(id: number, status: number) {
+    this.store.dispatch(new ChangeMinisterStatus({ id, status }));
   }
 
   constructor(private store: Store) {}

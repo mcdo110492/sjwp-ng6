@@ -1,4 +1,4 @@
-import { Component, OnInit, ChangeDetectionStrategy } from "@angular/core";
+import { Component, ChangeDetectionStrategy } from "@angular/core";
 
 import { Store } from "@ngxs/store";
 import { MinistersModel } from "@features/ministers/models/ministers.model";
@@ -9,14 +9,12 @@ import { CreateMinister } from "@features/ministers/store/actions/minister.actio
   templateUrl: "./ministers-create.component.html",
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class MinistersCreateComponent implements OnInit {
+export class MinistersCreateComponent {
   titlePage: string = "Create New Minister";
   buttonLabel: string = "Create New Minister";
   submitForm(formData: MinistersModel) {
     this.store.dispatch(new CreateMinister(formData));
   }
-
-  ngOnInit() {}
 
   constructor(private store: Store) {}
 }

@@ -29,6 +29,25 @@ export class MinistersService {
     );
   }
 
+  create(data: MinistersModel) {
+    return this.api.post<{ isCreated: boolean }>(this.url, data);
+  }
+
+  update(data: MinistersModel) {
+    return this.api.put<{ isUpdated: boolean }>(`${this.url}/${data.id}`, data);
+  }
+
+  changeStatus(id: number, status: number) {
+    const data = {
+      id,
+      active: status
+    };
+    return this.api.put<{ isStatusChanged: boolean }>(
+      `${this.url}/status/${id}`,
+      data
+    );
+  }
+
   constructor(
     private api: ApiHttpService,
     private serializer: EntitySerializerService
