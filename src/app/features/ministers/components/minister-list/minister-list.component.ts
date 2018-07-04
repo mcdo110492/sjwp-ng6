@@ -32,7 +32,7 @@ export class MinisterListComponent implements OnInit {
   @Select(MinisterState.tableEvent)
   tableEvent$: Observable<{ pageEvent; sort }>;
 
-  displayedColumns = ["name", "updateActions"];
+  displayedColumns = ["name", "status", "updateActions"];
   pageSizeOptions = [10, 25, 50, 100];
   dataSource = new MinisterListDataSource(this.entities$);
 
