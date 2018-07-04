@@ -9,9 +9,13 @@
       <form [formGroup]="ministerForm" novalidate>
         <mat-form-field appearance="outline" fxFlex>
           <mat-label>Name</mat-label>
-          <input matInput placeholder="Enter minsiter name" #name maxlength="150" formControlName="name" required>
+          <input matInput placeholder="Enter minsiter name" #name maxlength="150" formControlName="name" appUniqueValidator url="ministers/check/name"
+            [id]="ministerId" required>
           <mat-error *ngIf="nameRequired">Name is
             <strong>required</strong>
+          </mat-error>
+          <mat-error *ngIf="nameIsUnique">Name already
+            <strong>taken</strong>
           </mat-error>
           <mat-hint align="end">{{name.value?.length || 0}}/150</mat-hint>
         </mat-form-field>

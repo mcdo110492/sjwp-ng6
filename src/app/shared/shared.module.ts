@@ -6,6 +6,7 @@ import { RouterModule } from "@angular/router";
 import { MaterialModule } from "@material/index";
 
 import * as fromComponents from "./components";
+import * as fromDirectives from "./directives";
 
 @NgModule({
   imports: [
@@ -14,7 +15,7 @@ import * as fromComponents from "./components";
     ReactiveFormsModule,
     RouterModule.forChild([])
   ],
-  declarations: [...fromComponents.components],
-  exports: [...fromComponents.components]
+  declarations: [...fromComponents.components, ...fromDirectives.directives],
+  exports: [...fromComponents.components, ...fromDirectives.directives]
 })
 export class SharedModule {}

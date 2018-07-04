@@ -52,6 +52,14 @@ export class MinisterFormComponent implements OnInit {
     return this.ministerForm.get("name").hasError("required");
   }
 
+  get nameIsUnique(): boolean {
+    return this.ministerForm.get("name").hasError("uniqueTaken");
+  }
+
+  get ministerId(): number {
+    return this.ministerForm.get("id").value;
+  }
+
   checkisUpdate() {
     if (this.isUpdate && this.selectedData !== undefined) {
       const { id, name, active } = this.selectedData;
