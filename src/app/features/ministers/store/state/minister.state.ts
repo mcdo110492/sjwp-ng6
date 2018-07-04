@@ -40,7 +40,7 @@ export class MinisterState {
   @Selector()
   static getEntities(state: MinisterStateModel) {
     const { entities } = state;
-    return Object.keys(entities).map(id => entities[parseInt(id, 10)]);
+    return Object.keys(entities).map(id => entities[id]);
   }
 
   @Selector()
@@ -62,8 +62,9 @@ export class MinisterState {
   @Selector()
   static tableEvent(state: MinisterStateModel) {
     const { pageIndex, pageSize, pageLength, sort } = state;
+    const { active, direction } = sort;
     const pageEvent = { pageIndex, pageSize, pageLength };
-    const sortEvent = { active: sort.active, direction: sort.direction };
+    const sortEvent = { active, direction };
     return { pageEvent, sortEvent };
   }
 
@@ -116,7 +117,7 @@ export class MinisterState {
     };
 
     return this.service.fetchData(params, []).pipe(
-      debounceTime(5000),
+      debounceTime(500),
       distinctUntilChanged(),
       map(response => {
         const { data } = response;
@@ -133,7 +134,7 @@ export class MinisterState {
   @Action(SelectMinister)
   select(ctx: StateContext<MinisterStateModel>, action: SelectMinister) {
     const selectedEntity = action.payload;
-    return ctx.patchState({ selectedEntity });
+    ctx.patchState({ selectedEntity });
   }
 
   @Action(CreateMinister)
@@ -142,7 +143,7 @@ export class MinisterState {
     const { payload } = action;
     this.toast.showCreateSuccess("New Minister");
     setTimeout(() => {
-      return ctx.patchState({ isSaving: false });
+      ctx.patchState({ isSaving: false });
     }, 5000);
   }
 
@@ -151,7 +152,9 @@ export class MinisterState {
     ctx.patchState({ isSaving: true });
     const { payload } = action;
     this.toast.showUpdateSuccess(`Minister ${payload.name}`);
-    console.log(payload);
+    setTimeout(() => {
+      ctx.patchState({ isSaving: false });
+    }, 5000);
   }
 
   constructor(
