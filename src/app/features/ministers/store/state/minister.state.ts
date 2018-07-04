@@ -19,6 +19,7 @@ import {
 } from "@features/ministers/store/actions/minister.action";
 import { MinistersService } from "@features/ministers/services/ministers.service";
 import { ToasterService } from "@services/helpers/toaster/toaster.service";
+import { Navigate } from "@ngxs/router-plugin";
 
 const DEFAULT_STATES: MinisterStateModel = {
   entities: {},
@@ -147,7 +148,8 @@ export class MinisterState {
           "Create Minister Success",
           "Minister has been created."
         );
-        return ctx.patchState({ isSaving: false });
+        ctx.patchState({ isSaving: false });
+        return ctx.dispatch(new Navigate(["/registrar/ministers/list"]));
       }),
       catchError(() => ctx.patchState({ isSaving: false }))
     );
