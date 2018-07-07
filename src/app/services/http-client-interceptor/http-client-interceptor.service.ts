@@ -21,7 +21,7 @@ export class HttpClientInterceptorService implements HttpInterceptor {
     //Get the jwt token in the state
     const token = this.store.selectSnapshot(AuthState.token);
 
-    //Append the token to the headers
+    //Append the token to the Authorization Bearer headers
     const authRequest = request.clone({
       setHeaders: { Authorization: `Bearer ${token}` }
     });
