@@ -17,7 +17,7 @@ import {
 
 @Directive({
   selector:
-    "[appUniqueValidator][formControlName],[appUniqueValidator][ngModel]",
+    "[custom-unique-validator][formControlName],[custom-unique-validator][ngModel]",
   providers: [
     {
       provide: NG_ASYNC_VALIDATORS,

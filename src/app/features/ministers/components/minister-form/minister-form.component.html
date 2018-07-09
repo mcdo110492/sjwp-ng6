@@ -9,7 +9,7 @@
       <form [formGroup]="ministerForm" novalidate>
         <mat-form-field appearance="outline" fxFlex>
           <mat-label>Name</mat-label>
-          <input matInput placeholder="Enter minsiter name" #name maxlength="150" formControlName="name" appUniqueValidator url="ministers/check/name"
+          <input matInput placeholder="Enter minsiter name" #name maxlength="150" formControlName="name" custom-unique-validator url="ministers/check/name"
             [id]="ministerId" required>
           <mat-error *ngIf="nameRequired">Name is
             <strong>required</strong>
